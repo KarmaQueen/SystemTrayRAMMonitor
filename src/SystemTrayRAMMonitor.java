@@ -47,6 +47,12 @@ public class SystemTrayRAMMonitor {
         initUsage();
         getUsage();
 
+        //Init Tray
+        MenuItem exitItem = new MenuItem("Exit");
+        exitItem.addActionListener(e -> System.exit(0));
+        
+        popup.add(exitItem);
+
         try{
             tray.add(trayIcon);
         } catch(AWTException e){
