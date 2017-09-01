@@ -26,9 +26,6 @@ public class SystemTrayRAMMonitor {
     private static String
             strOccupiedRAM = "";
 
-    private static double
-            getSystemCpuLoad;
-
     private static final PopupMenu popup = new PopupMenu();
     private static Image image = Toolkit.getDefaultToolkit().createImage("default");
     private static TrayIcon trayIcon = new TrayIcon(image, "RAM Monitor");
@@ -36,6 +33,8 @@ public class SystemTrayRAMMonitor {
 
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     private static DecimalFormat df = new DecimalFormat("#.#");
+
+    private static boolean done = false;
 
     public static void main(final String[] args){
         if(!SystemTray.isSupported()){
@@ -61,7 +60,7 @@ public class SystemTrayRAMMonitor {
             System.out.println("TrayIcon could not be added.");
         }
 
-        while(true){
+        while(!done){
             getUsage();
             convertLongToGigabytes();
             setTextAsIcon(strOccupiedRAM);
@@ -69,6 +68,7 @@ public class SystemTrayRAMMonitor {
                 Thread.sleep(500);
             } catch(Exception e){
                 e.printStackTrace();
+                done = true;
             }
         }
 
@@ -130,7 +130,7 @@ public class SystemTrayRAMMonitor {
 
                 switch(method.getName()){
                     case strGetSystemCpuLoad:
-                        getSystemCpuLoad = Double.parseDouble(val.toString());
+                        //getSystemCpuLoad = Double.parseDouble(val.toString());
                         break;
                     case strGetFreePhysicalMemorySize:
                         getFreePhysicalMemorySize = Long.parseLong(val.toString());
