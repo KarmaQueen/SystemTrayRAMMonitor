@@ -50,8 +50,10 @@ public class SystemTrayRAMMonitor {
         //Init Tray
         MenuItem exitItem = new MenuItem("Exit");
         exitItem.addActionListener(e -> System.exit(0));
-        
+
         popup.add(exitItem);
+
+        trayIcon.setPopupMenu(popup);
 
         try{
             tray.add(trayIcon);
