@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SystemTrayRAMMonitor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SystemTrayRAMMonitor_jar</output-path>
+    <root id="archive" name="SystemTrayRAMMonitor.jar">
+      <element id="module-output" name="SystemTrayRAMMonitor" />
+    </root>
+  </artifact>
+</component>

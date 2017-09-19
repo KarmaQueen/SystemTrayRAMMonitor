@@ -35,6 +35,7 @@ public class SystemTrayRAMMonitor {
     private static DecimalFormat df = new DecimalFormat("#.#");
 
     private static boolean done = false;
+    private static long delay = 1000;
 
     public static void main(final String[] args){
         if(!SystemTray.isSupported()){
@@ -47,9 +48,35 @@ public class SystemTrayRAMMonitor {
         getUsage();
 
         //Init Tray
+        MenuItem delay1min = new MenuItem("1 minute");
+        MenuItem delay30sec = new MenuItem("30 Seconds");
+        MenuItem delay10sec = new MenuItem("10 Seconds");
+        MenuItem delay5sec = new MenuItem("5 seconds");
+        MenuItem delay1sec = new MenuItem("1 second");
+        MenuItem delay500ms = new MenuItem("500 ms");
+        MenuItem delay200ms =  new MenuItem("200 ms");
+        MenuItem delay100ms = new MenuItem("100 ms");
         MenuItem exitItem = new MenuItem("Exit");
-        exitItem.addActionListener(e -> System.exit(0));
 
+        delay1min.addActionListener(    e -> delay = 1000*60);
+        delay30sec.addActionListener(   e -> delay = 1000*30);
+        delay10sec.addActionListener(   e -> delay = 1000*10);
+        delay5sec.addActionListener(    e -> delay = 1000*5);
+        delay1sec.addActionListener(    e -> delay = 1000*1);
+        delay500ms.addActionListener(   e -> delay = 500);
+        delay200ms.addActionListener(   e -> delay = 200);
+        delay100ms.addActionListener(   e -> delay = 100);
+        exitItem.addActionListener(     e -> System.exit(0));
+
+        popup.add(delay1min);
+        popup.add(delay30sec);
+        popup.add(delay10sec);
+        popup.add(delay5sec);
+        popup.add(delay1sec);
+        popup.add(delay500ms);
+        popup.add(delay200ms);
+        popup.add(delay100ms);
+        popup.addSeparator();
         popup.add(exitItem);
 
         trayIcon.setPopupMenu(popup);
@@ -65,7 +92,7 @@ public class SystemTrayRAMMonitor {
             convertLongToGigabytes();
             setTextAsIcon(strOccupiedRAM);
             try {
-                Thread.sleep(500);
+                Thread.sleep(delay);
             } catch(Exception e){
                 e.printStackTrace();
                 done = true;
@@ -87,7 +114,6 @@ public class SystemTrayRAMMonitor {
         g2d.drawString(str, 0, 12);
         g2d.dispose();
         trayIcon.setImage(image);
-
     }
 
     /**
