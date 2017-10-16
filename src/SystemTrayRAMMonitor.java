@@ -12,8 +12,8 @@ import java.text.DecimalFormat;
  */
 public class SystemTrayRAMMonitor {
 
-    public static final String decimalFormatStr2 = "0.00";
-    public static final String demicalFormatStr = "0.0";
+    private static final String decimalFormatStr2 = "0.00";
+    private static final String demicalFormatStr = "0.0";
 
     private static final String
             strGetSystemCpuLoad = "getSystemCpuLoad",
@@ -65,7 +65,7 @@ public class SystemTrayRAMMonitor {
         delay30sec.addActionListener(   e -> delay = 1000*30);
         delay10sec.addActionListener(   e -> delay = 1000*10);
         delay5sec.addActionListener(    e -> delay = 1000*5);
-        delay1sec.addActionListener(    e -> delay = 1000*1);
+        delay1sec.addActionListener(    e -> delay = 1000);
         delay500ms.addActionListener(   e -> delay = 500);
         delay200ms.addActionListener(   e -> delay = 200);
         delay100ms.addActionListener(   e -> delay = 100);
