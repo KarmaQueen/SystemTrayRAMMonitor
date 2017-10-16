@@ -12,6 +12,9 @@ import java.text.DecimalFormat;
  */
 public class SystemTrayRAMMonitor {
 
+    public static final String decimalFormatStr2 = "0.00";
+    public static final String demicalFormatStr = "0.0";
+
     private static final String
             strGetSystemCpuLoad = "getSystemCpuLoad",
             strGetTotalPhysicalMemorySize = "getTotalPhysicalMemorySize",
@@ -31,11 +34,11 @@ public class SystemTrayRAMMonitor {
     private static TrayIcon trayIcon = new TrayIcon(image, "RAM Monitor");
     private static SystemTray tray = SystemTray.getSystemTray();
 
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
-    private static DecimalFormat df = new DecimalFormat("#.#");
+    private static DecimalFormat df2 = new DecimalFormat(decimalFormatStr2);
+    private static DecimalFormat df = new DecimalFormat(demicalFormatStr);
 
     private static boolean done = false;
-    private static long delay = 1000;
+    private static long delay = 1000*5;
 
     public static void main(final String[] args){
         if(!SystemTray.isSupported()){
