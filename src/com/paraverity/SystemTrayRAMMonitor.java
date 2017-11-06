@@ -1,3 +1,5 @@
+package com.paraverity;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.management.ManagementFactory;
@@ -8,7 +10,7 @@ import java.text.DecimalFormat;
 
 /**
  * A Tool that Shows your CPU/RAM usage on your SystemTray (icons on the bottom-right of your screen, on the taskbar)
- * Created by 44067301 on 9/1/2017.
+ * Created by David Lee on 2017-09-01.
  */
 public class SystemTrayRAMMonitor {
 
@@ -69,7 +71,7 @@ public class SystemTrayRAMMonitor {
         delay500ms.addActionListener(   e -> delay = 500);
         delay200ms.addActionListener(   e -> delay = 200);
         delay100ms.addActionListener(   e -> delay = 100);
-        exitItem.addActionListener(     e -> System.exit(0));
+        exitItem.addActionListener(     e -> done = true);
 
         popup.add(delay1min);
         popup.add(delay30sec);
